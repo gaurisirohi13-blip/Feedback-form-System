@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="apply_box">
+            <h1>Feedback Form <span class="small">(Spectent Assignment)</span></h1>
+
+            <form id="feedbackForm">
+                <div class="form_container">
+
+                    <div class="form_control">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form_control">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form_control">
+                        <label for="subject">Subject</label>
+                        <select id="subject" required>
+                            <option value="">Select subject</option>
+                            <option value="Suggestion">Suggestion</option>
+                            <option value="Complaint">Complaint</option>
+                            <option value="Review">Review</option>
+                            <option value="Support">Support</option>
+                        </select>
+                    </div>
+
+                    <div class="form_control">
+                        <label for="rating">Rating</label>
+                        <select id="rating" required>
+                            <option value="">Give rating</option>
+                            <option value="5">★★★★★ Excellent</option>
+                            <option value="4">★★★★ Good</option>
+                            <option value="3">★★★ Average</option>
+                            <option value="2">★★ Poor</option>
+                            <option value="1">★ Bad</option>
+                        </select>
+                    </div>
+
+                    <div class="textarea_control">
+                        <label for="feedback">Feedback Message</label>
+                        <textarea id="feedback" rows="5" placeholder="Write your feedback here..." required></textarea>
+                    </div>
+
+                </div>
+
+                <div class="button_container">
+                    <button type="submit">Submit Feedback</button>
+                </div>
+
+                <p id="message"></p>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("feedbackForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const feedback = document.getElementById("feedback").value;
+
+            const response = await fetch("http://localhost:3000/feedback", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name, email, feedback })
+            });
+
+            const data = await response.json();
+            document.getElementById("message").innerText = data.message;
+        });
+    </script>
+
+</body>
+</html>
