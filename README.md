@@ -1,160 +1,144 @@
-# Feedback-form-System
+# Feedback Form System
+
+A full-stack web application developed as part of the **Spectent Services – Build, Break & Explain Internship Assignment**.
+
+This project demonstrates:
+
+* Frontend development
+* Backend API integration
+* Input validation
+* Error handling
+* Testing mindset
+* Full project deployment
+
+## Live Demo
+
+**Deployed Application:** https://feedback-form-system-lilac.vercel.app
+
 ## Project Overview
 
-This project is developed as part of the **Spectent Services Internship Assignment**.
-The objective of this assignment is to build a simple **Feedback Form System** with both frontend and backend functionality, test the system for possible failures, improve major issues, and explain the development approach.
+The Feedback Form System is designed to collect user feedback through a clean and responsive interface. The application validates user inputs, processes requests through a backend API, and stores submitted feedback in memory.
 
----
+The main goal of this project was to build a working solution while also thinking about possible failures, improvements, and scalability.
 
 ## Features
 
-* User-friendly feedback form interface
-* Input fields for:
+### Frontend
 
-  * Full Name
-  * Email Address
-  * Subject
-  * Rating
-  * Feedback Message
-* Submit button for sending feedback
-* Success / Error message display
-* Backend API for processing feedback
-* Email format validation
+* Responsive feedback form UI
+* Full Name input field
+* Email Address field
+* Subject dropdown
+* Rating selection
+* Feedback message textarea
+* Submit button
+* Success / Error response message
+
+### Backend
+
+* REST API endpoint: `POST /feedback`
 * Required field validation
-* In-memory data storage
-
----
+* Email format validation
+* Error response handling
+* In-memory feedback storage
+* CORS support
 
 ## Technologies Used
 
 ### Frontend
 
-* HTML
-* CSS
+* HTML5
+* CSS3
 * JavaScript
 
 ### Backend
 
 * Node.js
 * Express.js
-* CORS
 
----
+### Deployment
+
+* Vercel
 
 ## Project Structure
 
-```text
 Feedback-form-System/
 │── index.html
 │── style.css
 │── server.js
 │── package.json
+│── vercel.json
 │── README.md
-```
-
----
-
-## How to Run the Project
-
-### 1) Install dependencies
-
-```bash
-npm install
-```
-
-### 2) Start server
-
-```bash
-node server.js
-```
-
-### 3) Run frontend
-
-Open `index.html` in browser.
-
----
 
 ## API Endpoint
 
 ### POST /feedback
 
-This endpoint receives feedback data from users and validates:
+Sample Request:
 
-* Required fields
-* Valid email format
+```json
+{
+  "name": "Gauri",
+  "email": "gauri@example.com",
+  "feedback": "This is sample feedback."
+}
+```
 
-After validation, feedback is stored in memory and a success message is returned.
+Sample Response:
 
----
+```json
+{
+  "message": "Feedback submitted successfully!"
+}
+```
 
-## Possible Failure Cases Identified
+## Testing & Failure Analysis
+
+During development, several possible failure scenarios were identified:
 
 1. Empty input fields
 2. Invalid email format
 3. Duplicate submissions
-4. Server connection failure
-5. Very long feedback message
-6. Invalid characters in input
-7. Slow network response
-8. High traffic load
+4. Long feedback messages
+5. Network interruption during submission
+6. Backend unavailability
+7. Unexpected API errors
+8. Invalid user input
 9. Browser compatibility issues
-10. Unexpected server crash
+10. High traffic load
 
----
+## Improvements Implemented
 
-## Improvements Made
+* Added required field validation
+* Added email format verification
+* Improved UI for better usability
+* Added proper success / error response handling
 
-### 1. Input Validation
+## Trade-offs
 
-Added required field validation to prevent empty submissions.
+To keep the project simple and lightweight:
 
-### 2. Email Verification
+* In-memory storage was used instead of a database
+* Authentication was not added
+* Dashboard/analytics features were excluded
 
-Added email format checking for accurate data.
-
-### 3. Improved UI Design
-
-Created a clean and responsive interface for better user experience.
-
----
-
-## Development Approach
-
-The system was designed with simplicity and functionality in mind.
-A clean frontend was developed for collecting user feedback, while a lightweight backend API handles validation and data storage.
-
-### Trade-offs
-
-* Used in-memory storage instead of a database for simplicity
-* Basic backend structure without authentication
-
-### Future Improvements
+## Future Enhancements
 
 * Database integration
 * Admin dashboard
 * Feedback analytics
 * User authentication
-* Cloud deployment support
+* Rate limiting
+* Email notifications
+* Cloud scaling support
 
----
+## Deployment
 
-## Scalability Consideration
+This project is deployed on Vercel and accessible at:
 
-If 10,000 users use the system at the same time:
-
-* Server load may increase
-* Memory storage may become inefficient
-* Response time may slow down
-
-Possible solutions:
-
-* Database storage
-* Load balancing
-* Cloud hosting
-* Caching mechanism
-
----
+https://feedback-form-system-lilac.vercel.app
 
 ## Author
 
 **Gauri**
+
